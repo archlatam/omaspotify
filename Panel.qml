@@ -295,9 +295,9 @@ Panel {
     }
   }
 
-  function formatTime(us) {
-    if (!us || us <= 0) return "0:00"
-    var totalSec = Math.floor(us / 1000000)
+  function formatTime(secs) {
+    if (!secs || secs <= 0) return "0:00"
+    var totalSec = Math.floor(secs)
     var min = Math.floor(totalSec / 60)
     var sec = totalSec % 60
     return min + ":" + (sec < 10 ? "0" : "") + sec
