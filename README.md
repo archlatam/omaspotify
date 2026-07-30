@@ -1,5 +1,7 @@
 # Omaspotify
 
+![preview](preview.png)
+
 Bar widget + popup panel for Spotify via MPRIS (`Quickshell.Services.Mpris`).
 
 No background service or persisted state — everything is read live from
