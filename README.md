@@ -21,7 +21,7 @@ an alternative; the widget still works with the basic MPRIS fields
 ## Install
 
 ```bash
-omarchy plugin add https://github.com/m4teoarg/omaspotify.git
+omarchy plugin add https://github.com/archlatam/omaspotify.git
 ```
 
 The plugin is **disabled by default** so you can review the code first:
@@ -30,15 +30,14 @@ The plugin is **disabled by default** so you can review the code first:
 omarchy plugin enable m4teo.omaspotify
 ```
 
-Then add it to the bar layout in `~/.config/omarchy/shell.json`:
+Then add it to the bar — you'll be asked where to place it:
 
-```json
-{
-  "id": "m4teo.omaspotify"
-}
+```bash
+omarchy bar plugin add m4teo.omaspotify
 ```
 
-Or use the bar drag-and-drop to place it where you want.
+You can also drag-and-drop it to reposition it later, or edit
+`~/.config/omarchy/shell.json` manually.
 
 ## Usage
 
