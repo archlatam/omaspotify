@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "m4teo.omaspotify",
+  "name": "Omaspotify",
+  "version": "1.0.0",
+  "author": "m4teoarg",
+  "description": "Spotify MPRIS controller with album art, seekable progress bar, and playback controls in a popup panel",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Omaspotify",
+    "description": "Spotify controller with album art, progress bar, and playback controls",
+    "category": "Media",
+    "allowMultiple": false
+  }
+}
