@@ -13,6 +13,8 @@ controls.
 
 - **Omarchy** (Quickshell-based desktop environment)
 - **Spotify** official Linux client running — exposes MPRIS while open
+- **ncspot** (optional) — terminal Spotify client; used as fallback when the
+  official client isn't running
 - Nerd Fonts (for the Spotify icon glyph in the bar)
 
 If the official client doesn't report `position`/`volume` reliably (a known
@@ -85,7 +87,8 @@ Then remove the entry from `~/.config/omarchy/shell.json`.
 ## Multi-source note
 
 If you have multiple MPRIS players active (e.g. a browser with YouTube),
-the widget filters specifically by `identity === "Spotify"` /
-`desktopEntry === "spotify"` so it doesn't jump between sources. To make
-it source-agnostic (any active player), remove that filter in
-`Panel.qml` and use `Mpris.players.values[0]` instead.
+the widget prefers the official Spotify client
+(`identity === "Spotify"` / `desktopEntry === "spotify"`) and falls back to
+`ncspot` only when it isn't running, so it doesn't jump between arbitrary
+sources. To make it source-agnostic (any active player), replace the player
+lookup in `Panel.qml` with `Mpris.players.values[0]` instead.
