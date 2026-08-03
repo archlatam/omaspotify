@@ -11,11 +11,15 @@ Panel {
   ipcTarget: "m4teo.omaspotify"
 
   property var player: {
+    // Prefer the official Spotify client, then fall back to ncspot (terminal
+    // client) so the widget also works when the desktop app isn't running.
+    var fallbackFound = null
     for (var i = 0; i < Mpris.players.values.length; i++) {
-      var p = Mpris.players.values[i]
-      if (p.identity === "Spotify" || p.desktopEntry === "spotify") return p
+      var playerActual = Mpris.players.values[i]
+      if (playerActual.identity === "Spotify" || playerActual.desktopEntry === "spotify") return playerActual
+      if (playerActual.identity === "ncspot") fallbackFound = playerActual
     }
-    return null
+    return fallbackFound
   }
 
   property bool playing: player && player.playbackState === MprisPlaybackState.Playing
@@ -151,7 +155,7 @@ Panel {
 
             Text {
               anchors.horizontalCenter: parent.horizontalCenter
-              text: "Spotify no está reproduciendo"
+              text: "Nada reproduciéndose"
               color: root.contentForeground
               opacity: 0.6
               font.family: root.contentFontFamily
