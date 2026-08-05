@@ -21,8 +21,8 @@ Panel {
   property bool playing: player && player.playbackState === MprisPlaybackState.Playing
   property real progress: player && player.length > 0 ? player.position / player.length : 0
 
-  readonly property string artUrl: player ? (player.artUrl || "") : ""
-  readonly property string artistName: player ? (player.trackArtists && player.trackArtists.length > 0 ? player.trackArtists[0] : "") : ""
+  readonly property string artUrl: player ? (player.trackArtUrl || "") : ""
+  readonly property string artistName: player && player.trackArtist ? player.trackArtist : ""
   readonly property string trackTitle: player ? (player.trackTitle || "") : ""
 
   readonly property color contentForeground: bar ? bar.foreground : Color.foreground
@@ -44,6 +44,7 @@ Panel {
     bar: root.bar
     text: "\uf1bc"
     active: root.playing
+    activeColor: "#1DB954"
 
     onPressed: function(b) {
       if (b === Qt.MiddleButton && root.player) {
@@ -151,7 +152,7 @@ Panel {
 
             Text {
               anchors.horizontalCenter: parent.horizontalCenter
-              text: "Spotify no está reproduciendo"
+              text: "Spotify is not playing"
               color: root.contentForeground
               opacity: 0.6
               font.family: root.contentFontFamily
